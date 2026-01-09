@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأخبار - CAN 2025</title>
+    <meta name="description" content="آخر أخبار كأس أمم إفريقيا CAN 2025، تحديثات تلقائية.">
+    <meta name="keywords" content="أخبار CAN 2025, كأس أمم إفريقيا, المغرب">
+    <link rel="canonical" href="https://yourdomain.com/news.html">
+    <link rel="alternate" hreflang="ar" href="https://yourdomain.com/news.html">
+    <link rel="alternate" hreflang="fr" href="https://yourdomain.com/fr/news.html">
+    <link rel="alternate" hreflang="en" href="https://yourdomain.com/en/news.html">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"NewsArticle","headline":"آخر أخبار CAN 2025"}
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .news-item { background: #fff; padding: 30px; margin: 30px 0; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); text-align: right; }
+        .news-item h3 { color: #4CAF50; font-size: 1.8em; margin-bottom: 15px; }
+        .news-item p { font-size: 1.2em; margin: 15px 0; }
+        .news-item a { color: #2196F3; text-decoration: none; }
+        .loading { text-align: center; font-size: 1.5em; color: #4CAF50; padding: 50px; }
+        .ad-container { text-align: center; margin: 40px 0; min-height: 300px; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/66/2023_Africa_Cup_of_Nations_logo.svg/1280px-2023_Africa_Cup_of_Nations_logo.svg.png" alt="CAN 2025" class="can-logo">
+        <h1>CAN 2025 المغرب - الأخبار</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="live.html">مشاهدة حية</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="players.html">اللاعبون</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>آخر أخبار CAN 2025 (تتحدث تلقائيًا)</h2>
+            <div id="news-feed" class="loading">جاري تحميل الأخبار...</div>
+            <div class="ad-container">مكان إعلان AdSense</div>
+        </section>
+    </main>
+    <div class="translate" id="google_translate_element"></div>
+    <footer>
+        <p>&copy; 2026 CAN 2025 المغرب</p>
+    </footer>
+    <script>
+        async function loadNews() {
+            const proxy = 'https://api.allorigins.win/raw?url=';
+            const rssUrls = [
+                'https://www.hespress.com/sport/rss',
+                'https://www.goal.com/ar/feeds/news',
+                'https://www.beinsports.com/ar/football/africa-cup-of-nations/rss'
+            ];
+            let allNews = [];
+            for (let url of rssUrls) {
+                try {
+                    const response = await fetch(proxy + encodeURIComponent(url));
+                    const text = await response.text();
+                    const parser = new DOMParser();
+                    const xml = parser.parseFromString(text, "text/xml");
+                    const items = xml.querySelectorAll("item");
+                    items.forEach(item => {
+                        const title = item.querySelector("title")?.textContent || '';
+                        const link = item.querySelector("link")?.textContent || '#';
+                        const description = item.querySelector("description")?.textContent || '';
+                        const pubDate = item.querySelector("pubDate")?.textContent || '';
+                        if (title.includes('كأس أمم') || title.includes('CAN') || title.includes('المغرب') || title.includes('أفريقيا')) {
+                            allNews.push({ title, link, description, pubDate });
+                        }
+                    });
+                } catch (e) {
+                    console.log("مشكل في جلب RSS من " + url);
+                }
+            }
+            allNews.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+            allNews = allNews.slice(0, 10);
+            let html = '';
+            if (allNews.length === 0) {
+                html = '<p>لا توجد أخبار جديدة حاليًا، جرب لاحقًا.</p>';
+            } else {
+                allNews.forEach(news => {
+                    const cleanDesc = news.description.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                    html += `
+                    <div class="news-item">
+                        <h3><a href="${news.link}" target="_blank">${news.title}</a></h3>
+                        <p>${cleanDesc}</p>
+                        <small>نشر في: ${new Date(news.pubDate).toLocaleDateString('ar-MA')}</small>
+                    </div>`;
+                });
+            }
+            document.getElementById('news-feed').innerHTML = html;
+        }
+        loadNews();
+        setInterval(loadNews, 600000);
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ar', includedLanguages: 'ar,fr,en'}, 'google_translate_element');
+        }
+    </script>
+</body>
+</html>

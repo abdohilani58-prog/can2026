@@ -1,0 +1,103 @@
+live <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاهدة حية - CAN 2025</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .stream-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+            aspect-ratio: 16 / 9;
+            border: 3px solid #4CAF50;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        iframe, video {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .stream-options {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .stream-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+        .stream-btn:hover {
+            background: #1976D2;
+        }
+        .note {
+            font-size: 1.1em;
+            color: #555;
+            margin: 30px;
+            padding: 20px;
+            background: #fff9e6;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/66/2023_Africa_Cup_of_Nations_logo.svg/1280px-2023_Africa_Cup_of_Nations_logo.svg.png" alt="CAN 2025" class="can-logo">
+        <h1>CAN 2025 المغرب - مشاهدة حية</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="live.html">مشاهدة حية</a></li>
+                <li><a href="news.html">الأخبار</a></li>
+                <li><a href="players.html">اللاعبون</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>مشاهدة مباراة المغرب vs الكاميرون - ربع النهائي (اليوم 9 يناير 2026 - 20:00)</h2>
+
+            <div class="note">
+                <strong>ملاحظة:</strong> البث الرسمي حصري على beIN Sports. إليك أفضل الخيارات المتاحة للمشاهدة داخل الموقع:
+            </div>
+
+            <!-- خيار 1: YouTube Live (إذا كانت SNRT أو CAF تبث رسميًا - حاليًا غير متوفر، لكن نموذج) -->
+            <div class="stream-container">
+                <iframe src="https://www.youtube.com/embed/live_stream?channel=UC2kZXbP4c5uE4E0J3U0k8kQ&autoplay=1" allowfullscreen></iframe>
+                <!-- غير الـ channel ID إذا لقيت بث رسمي من الاتحاد الإفريقي أو SNRT -->
+            </div>
+
+            <!-- خيار 2: بديل (إذا توفر m3u8 من قناة مفتوحة) -->
+            <!-- <div class="stream-container">
+                <video controls autoplay>
+                    <source src="رابط_m3u8_هنا" type="application/x-mpegURL">
+                    متصفحك لا يدعم الفيديو.
+                </video>
+            </div> -->
+
+            <div class="stream-options">
+                <a href="https://www.beinsports.com/ar/football/africa-cup-of-nations/2025" target="_blank" class="stream-btn">beIN Sports - البث الرسمي</a>
+                <a href="https://www.sofascore.com/football/match/cameroon-morocco/4bs4bs" target="_blank" class="stream-btn">Sofascore - تتبع حي</a>
+                <a href="https://www.flashscore.com/match/abc123/#live-stream" target="_blank" class="stream-btn">Flashscore - Live</a>
+            </div>
+
+            <div class="note">
+                إذا ما تحملش البث، جرب الروابط أعلاه أو انتظر بث رسمي مجاني من CAF أو SNRT.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CAN 2025 المغرب - موقع رياضي احترافي</p>
+    </footer>
+</body>
+</html>
